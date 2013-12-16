@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4DA37BC8185F74CE000E9736 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4DA37BC6185F74CE000E9736 /* InfoPlist.strings */; };
-		4DA37BCA185F74CE000E9736 /* RustyKext.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DA37BC9185F74CE000E9736 /* RustyKext.c */; };
+		4DA37BD2185F781B000E9736 /* main.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA37BD1185F781B000E9736 /* main.o */; };
+		4DA37BD4185F8274000E9736 /* main.rs in Resources */ = {isa = PBXBuildFile; fileRef = 4DA37BD3185F8274000E9736 /* main.rs */; };
+		4DA37BD7185F84CD000E9736 /* RustyKext.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DA37BC9185F74CE000E9736 /* RustyKext.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +20,8 @@
 		4DA37BC7185F74CE000E9736 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4DA37BC9185F74CE000E9736 /* RustyKext.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = RustyKext.c; sourceTree = "<group>"; };
 		4DA37BCB185F74CE000E9736 /* RustyKext-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RustyKext-Prefix.pch"; sourceTree = "<group>"; };
+		4DA37BD1185F781B000E9736 /* main.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = main.o; path = RustyKext/main.o; sourceTree = "<group>"; };
+		4DA37BD3185F8274000E9736 /* main.rs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.rs; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -25,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DA37BD2185F781B000E9736 /* main.o in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +56,7 @@
 		4DA37BC0185F74CE000E9736 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4DA37BD1185F781B000E9736 /* main.o */,
 				4DA37BC1185F74CE000E9736 /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -67,6 +73,7 @@
 		4DA37BC3185F74CE000E9736 /* RustyKext */ = {
 			isa = PBXGroup;
 			children = (
+				4DA37BD3185F8274000E9736 /* main.rs */,
 				4DA37BC9185F74CE000E9736 /* RustyKext.c */,
 				4DA37BC4185F74CE000E9736 /* Supporting Files */,
 			);
@@ -100,11 +107,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4DA37BCE185F74CE000E9736 /* Build configuration list for PBXNativeTarget "RustyKext" */;
 			buildPhases = (
+				4DA37BD6185F84BD000E9736 /* ShellScript */,
 				4DA37BB8185F74CE000E9736 /* Sources */,
 				4DA37BB9185F74CE000E9736 /* Frameworks */,
 				4DA37BBA185F74CE000E9736 /* Headers */,
 				4DA37BBB185F74CE000E9736 /* Resources */,
 				4DA37BBC185F74CE000E9736 /* Rez */,
+				4D8A7912185F84EF0075E20D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -147,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DA37BC8185F74CE000E9736 /* InfoPlist.strings in Resources */,
+				4DA37BD4185F8274000E9736 /* main.rs in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,12 +172,42 @@
 		};
 /* End PBXRezBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4D8A7912185F84EF0075E20D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+		4DA37BD6185F84BD000E9736 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/main.rs",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/rustc -O --lib -o main.o -c main.rs";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4DA37BB8185F74CE000E9736 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DA37BCA185F74CE000E9736 /* RustyKext.c in Sources */,
+				4DA37BD7185F84CD000E9736 /* RustyKext.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,7 +296,7 @@
 		4DA37BCF185F74CE000E9736 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Developer ID";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RustyKext/RustyKext-Prefix.pch";
@@ -273,7 +313,7 @@
 		4DA37BD0185F74CE000E9736 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Developer ID";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RustyKext/RustyKext-Prefix.pch";
@@ -306,6 +346,7 @@
 				4DA37BD0185F74CE000E9736 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

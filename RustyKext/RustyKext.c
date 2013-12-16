@@ -11,8 +11,14 @@
 kern_return_t RustyKext_start(kmod_info_t * ki, void *d);
 kern_return_t RustyKext_stop(kmod_info_t *ki, void *d);
 
+char __morestack[1024];
+
+extern void rust_main(void);
+
 kern_return_t RustyKext_start(kmod_info_t * ki, void *d)
 {
+    rust_main();
+    
     return KERN_SUCCESS;
 }
 
