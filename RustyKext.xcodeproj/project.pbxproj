@@ -13,7 +13,18 @@
 		4DA37BD7185F84CD000E9736 /* RustyKext.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DA37BC9185F74CE000E9736 /* RustyKext.c */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4D9BD7251860160E00F9FC50 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DA37BB4185F74CE000E9736 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D9BD7201860134900F9FC50;
+			remoteInfo = RustSrc;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		4D9BD724186013AF00F9FC50 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		4DA37BBE185F74CE000E9736 /* RustyKext.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RustyKext.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DA37BC2185F74CE000E9736 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = System/Library/Frameworks/Kernel.framework; sourceTree = SDKROOT; };
 		4DA37BC5185F74CE000E9736 /* RustyKext-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RustyKext-Info.plist"; sourceTree = "<group>"; };
@@ -76,6 +87,7 @@
 				4DA37BD3185F8274000E9736 /* main.rs */,
 				4DA37BC9185F74CE000E9736 /* RustyKext.c */,
 				4DA37BC4185F74CE000E9736 /* Supporting Files */,
+				4D9BD724186013AF00F9FC50 /* Makefile */,
 			);
 			path = RustyKext;
 			sourceTree = "<group>";
@@ -102,12 +114,28 @@
 		};
 /* End PBXHeadersBuildPhase section */
 
+/* Begin PBXLegacyTarget section */
+		4D9BD7201860134900F9FC50 /* RustSrc */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = 4D9BD7211860134900F9FC50 /* Build configuration list for PBXLegacyTarget "RustSrc" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = "$(SRCROOT)/RustyKext";
+			dependencies = (
+			);
+			name = RustSrc;
+			passBuildSettingsInEnvironment = 1;
+			productName = RustSrc;
+		};
+/* End PBXLegacyTarget section */
+
 /* Begin PBXNativeTarget section */
 		4DA37BBD185F74CE000E9736 /* RustyKext */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4DA37BCE185F74CE000E9736 /* Build configuration list for PBXNativeTarget "RustyKext" */;
 			buildPhases = (
-				4DA37BD6185F84BD000E9736 /* ShellScript */,
 				4DA37BB8185F74CE000E9736 /* Sources */,
 				4DA37BB9185F74CE000E9736 /* Frameworks */,
 				4DA37BBA185F74CE000E9736 /* Headers */,
@@ -118,6 +146,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				4D9BD7261860160E00F9FC50 /* PBXTargetDependency */,
 			);
 			name = RustyKext;
 			productName = RustyKext;
@@ -146,6 +175,7 @@
 			projectRoot = "";
 			targets = (
 				4DA37BBD185F74CE000E9736 /* RustyKext */,
+				4D9BD7201860134900F9FC50 /* RustSrc */,
 			);
 		};
 /* End PBXProject section */
@@ -186,20 +216,6 @@
 			shellPath = /bin/sh;
 			shellScript = "";
 		};
-		4DA37BD6185F84BD000E9736 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/main.rs",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/rustc -O --lib -o main.o -c main.rs";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -213,6 +229,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		4D9BD7261860160E00F9FC50 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4D9BD7201860134900F9FC50 /* RustSrc */;
+			targetProxy = 4D9BD7251860160E00F9FC50 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		4DA37BC6185F74CE000E9736 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -225,6 +249,31 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4D9BD7221860134900F9FC50 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUGGING_SYMBOLS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4D9BD7231860134900F9FC50 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		4DA37BCC185F74CE000E9736 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -330,6 +379,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4D9BD7211860134900F9FC50 /* Build configuration list for PBXLegacyTarget "RustSrc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D9BD7221860134900F9FC50 /* Debug */,
+				4D9BD7231860134900F9FC50 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		4DA37BB7185F74CE000E9736 /* Build configuration list for PBXProject "RustyKext" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
