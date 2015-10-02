@@ -12,13 +12,16 @@ pub unsafe fn rust_main() {
 
 #[lang = "panic_fmt"]
 #[allow(unused_variables)]
+#[cfg(not(test))]
 extern fn panic_fmt(args: &core::fmt::Arguments,
                     file: &str,
                     line: u32) -> ! {
     loop {}
 }
 
-#[lang = "eh_personality"] extern fn eh_personality() {}
+#[cfg(not(test))]
+#[lang = "eh_personality"]
+extern fn eh_personality() {}
 
 #[test]
 fn it_works() {
