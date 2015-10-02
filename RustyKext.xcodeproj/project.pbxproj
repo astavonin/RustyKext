@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D8A4B351BBEAF9A0003E192 /* libkernel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D8A4B341BBEAF9A0003E192 /* libkernel.a */; settings = {ASSET_TAGS = (); }; };
 		4DA37BC8185F74CE000E9736 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4DA37BC6185F74CE000E9736 /* InfoPlist.strings */; };
-		4DA37BD2185F781B000E9736 /* main.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA37BD1185F781B000E9736 /* main.o */; };
-		4DA37BD4185F8274000E9736 /* main.rs in Resources */ = {isa = PBXBuildFile; fileRef = 4DA37BD3185F8274000E9736 /* main.rs */; };
 		4DA37BD7185F84CD000E9736 /* RustyKext.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DA37BC9185F74CE000E9736 /* RustyKext.c */; };
 /* End PBXBuildFile section */
 
@@ -24,15 +23,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4D9BD724186013AF00F9FC50 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		4D8A4B341BBEAF9A0003E192 /* libkernel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libkernel.a; path = kernel/target/debug/libkernel.a; sourceTree = "<group>"; };
 		4DA37BBE185F74CE000E9736 /* RustyKext.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RustyKext.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DA37BC2185F74CE000E9736 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = System/Library/Frameworks/Kernel.framework; sourceTree = SDKROOT; };
 		4DA37BC5185F74CE000E9736 /* RustyKext-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RustyKext-Info.plist"; sourceTree = "<group>"; };
 		4DA37BC7185F74CE000E9736 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4DA37BC9185F74CE000E9736 /* RustyKext.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = RustyKext.c; sourceTree = "<group>"; };
 		4DA37BCB185F74CE000E9736 /* RustyKext-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RustyKext-Prefix.pch"; sourceTree = "<group>"; };
-		4DA37BD1185F781B000E9736 /* main.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = main.o; path = RustyKext/main.o; sourceTree = "<group>"; };
-		4DA37BD3185F8274000E9736 /* main.rs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.rs; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,7 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DA37BD2185F781B000E9736 /* main.o in Frameworks */,
+				4D8A4B351BBEAF9A0003E192 /* libkernel.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,7 +64,7 @@
 		4DA37BC0185F74CE000E9736 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4DA37BD1185F781B000E9736 /* main.o */,
+				4D8A4B341BBEAF9A0003E192 /* libkernel.a */,
 				4DA37BC1185F74CE000E9736 /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -84,10 +81,8 @@
 		4DA37BC3185F74CE000E9736 /* RustyKext */ = {
 			isa = PBXGroup;
 			children = (
-				4DA37BD3185F8274000E9736 /* main.rs */,
 				4DA37BC9185F74CE000E9736 /* RustyKext.c */,
 				4DA37BC4185F74CE000E9736 /* Supporting Files */,
-				4D9BD724186013AF00F9FC50 /* Makefile */,
 			);
 			path = RustyKext;
 			sourceTree = "<group>";
@@ -117,12 +112,12 @@
 /* Begin PBXLegacyTarget section */
 		4D9BD7201860134900F9FC50 /* RustSrc */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "$(ACTION)";
+			buildArgumentsString = build;
 			buildConfigurationList = 4D9BD7211860134900F9FC50 /* Build configuration list for PBXLegacyTarget "RustSrc" */;
 			buildPhases = (
 			);
-			buildToolPath = /usr/bin/make;
-			buildWorkingDirectory = "$(SRCROOT)/RustyKext";
+			buildToolPath = /usr/local/bin/cargo;
+			buildWorkingDirectory = /Users/astavonin/projects/RustyKext/kernel;
 			dependencies = (
 			);
 			name = RustSrc;
@@ -186,7 +181,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DA37BC8185F74CE000E9736 /* InfoPlist.strings in Resources */,
-				4DA37BD4185F8274000E9736 /* main.rs in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,11 +344,16 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RustyKext/RustyKext-Prefix.pch";
 				INFOPLIST_FILE = "RustyKext/RustyKext-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/kernel/target/debug",
+				);
 				MODULE_NAME = me.sysdev.RustyKext.RustyKext;
 				MODULE_START = RustyKext_start;
 				MODULE_STOP = RustyKext_stop;
 				MODULE_VERSION = 1.0.0d1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.10;
 				WRAPPER_EXTENSION = kext;
 			};
 			name = Debug;
@@ -367,11 +366,16 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RustyKext/RustyKext-Prefix.pch";
 				INFOPLIST_FILE = "RustyKext/RustyKext-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/kernel/target/debug",
+				);
 				MODULE_NAME = me.sysdev.RustyKext.RustyKext;
 				MODULE_START = RustyKext_start;
 				MODULE_STOP = RustyKext_stop;
 				MODULE_VERSION = 1.0.0d1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.10;
 				WRAPPER_EXTENSION = kext;
 			};
 			name = Release;
@@ -386,6 +390,7 @@
 				4D9BD7231860134900F9FC50 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4DA37BB7185F74CE000E9736 /* Build configuration list for PBXProject "RustyKext" */ = {
 			isa = XCConfigurationList;

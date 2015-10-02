@@ -1,0 +1,8 @@
+[package]
+name = "kernel"
+version = "0.1.0"
+authors = ["alex@sysdev.me"]
+
+[lib]
+name = "kernel"
+crate-type = ["staticlib"]
