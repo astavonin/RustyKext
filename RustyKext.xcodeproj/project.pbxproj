@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4D8A4B351BBEAF9A0003E192 /* libkernel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D8A4B341BBEAF9A0003E192 /* libkernel.a */; settings = {ASSET_TAGS = (); }; };
+		4D8A4B351BBEAF9A0003E192 /* libkernel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D8A4B341BBEAF9A0003E192 /* libkernel.a */; };
 		4DA37BC8185F74CE000E9736 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4DA37BC6185F74CE000E9736 /* InfoPlist.strings */; };
 		4DA37BD7185F84CD000E9736 /* RustyKext.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DA37BC9185F74CE000E9736 /* RustyKext.c */; };
 /* End PBXBuildFile section */
@@ -117,7 +117,7 @@
 			buildPhases = (
 			);
 			buildToolPath = /usr/local/bin/cargo;
-			buildWorkingDirectory = /Users/astavonin/projects/RustyKext/kernel;
+			buildWorkingDirectory = ./kernel;
 			dependencies = (
 			);
 			name = RustSrc;
@@ -353,7 +353,7 @@
 				MODULE_STOP = RustyKext_stop;
 				MODULE_VERSION = 1.0.0d1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.10;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = kext;
 			};
 			name = Debug;
@@ -375,7 +375,7 @@
 				MODULE_STOP = RustyKext_stop;
 				MODULE_VERSION = 1.0.0d1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.10;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = kext;
 			};
 			name = Release;
